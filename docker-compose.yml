@@ -1,0 +1,38 @@
+version: '3.1'
+
+services:
+
+  # データベース
+  db:
+    image: postgres
+    container_name: db_1
+    environment:
+      POSTGRES_DB: sample-db
+      POSTGRES_USER: sample-user
+      POSTGRES_PASSWORD: hi2mi4i6
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data2
+  adminer:
+    image: adminer
+    container_name: adminer_1
+    restart: always
+    environment:
+        ADMINER_DEFAULT_SERVER: db_1
+    ports:
+      - 8080:8080
+
+  # Djangoアプリ
+  web:
+    container_name: web_1
+    build: .
+    command: python3 manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:

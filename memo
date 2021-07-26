@@ -1,0 +1,1 @@
+docker compose run web cd composeexample && python manage.py startapp polls
