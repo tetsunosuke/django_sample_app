@@ -9,6 +9,6 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('<int:question_id>/', views.detail, name='detail'),
-    path('update/<int:question_id>', views.update, name='update'),
-    path('update_lock/<int:question_id>', views.update_lock, name='update_lock'),
+    path('add/<int:question_id>/<int:x>', views.add, name='add'),
+    path('buy/<int:question_id>/<int:x>', views.buy, name='buy'),
 ]

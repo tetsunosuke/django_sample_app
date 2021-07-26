@@ -1,9 +1,13 @@
 {% if latest_question_list %}
     <ul>
     {% for question in latest_question_list %}
-    <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a>, amount={{question.amount}}</li>
+    <li>id={{question.id}}, amount={{question.amount}}, <a href="/polls/add/{{question.id}}/1">add 1</a> <a href="/polls/buy/{{question.id}}/1">buy 1</a></li>
+    </li>
     {% endfor %}
     </ul>
 {% else %}
     <p>No polls are available.</p>
 {% endif %}
+
+<p>指定した数量を補充する場合には /polls/add/question_id/n(nは数量） へリクエストしてください</p>
+<p>指定した数量を購入する場合には /polls/buy/question_id/n(nは数量） へリクエストしてください（ロック処理はこっちだけです）</p>
