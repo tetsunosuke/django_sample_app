@@ -7,9 +7,9 @@ services:
     image: postgres
     container_name: db_1
     environment:
-      POSTGRES_DB: sample-db
-      POSTGRES_USER: sample-user
-      POSTGRES_PASSWORD: hi2mi4i6
+      POSTGRES_DB: testdb
+      POSTGRES_USER: testuser
+      POSTGRES_PASSWORD: testpass
     restart: always
     volumes:
       - postgres_data:/var/lib/postgresql/data2
